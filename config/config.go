@@ -8,11 +8,11 @@ import (
 const envFileName = ".env"
 const devEnv = "dev"
 
-func init() {
-	if os.Getenv("SERVICE_ENV") == devEnv {
-		MustLoadEnv()
-	}
-}
+//func init() {
+//	if os.Getenv("SERVICE_ENV") == devEnv {
+//		MustLoadEnv()
+//	}
+//}
 
 // New returns the settings from the environment.
 func New() *Config {

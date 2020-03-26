@@ -10,6 +10,7 @@ type Config struct {
 	Broker       Broker
 	Postgres     Postgres
 	ProxyService ProxyService
+	Ristretto    Ristretto
 	//Logging  Logging
 	//Web      Web
 }

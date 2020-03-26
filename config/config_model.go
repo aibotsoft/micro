@@ -6,10 +6,10 @@ import (
 
 // Config provides the system configuration.
 type Config struct {
-	Service        Service
-	Broker         Broker
-	Postgres       Postgres
-	CollectService ProxyService
+	Service      Service
+	Broker       Broker
+	Postgres     Postgres
+	ProxyService ProxyService
 	//Logging  Logging
 	//Web      Web
 }

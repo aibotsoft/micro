@@ -8,7 +8,7 @@ import (
 type Config struct {
 	Service        Service
 	Broker         Broker
-	Database       Database
+	Postgres       Postgres
 	CollectService ProxyService
 	//Logging  Logging
 	//Web      Web
@@ -38,7 +38,7 @@ type Broker struct {
 	ReconnectWait  time.Duration `envconfig:"NATS_RECONNECT_WAIT"`
 	Timeout        time.Duration `envconfig:"NATS_TIMEOUT"`
 }
-type Database struct {
+type Postgres struct {
 	Host       string        `envconfig:"PGHOST"`
 	Port       string        `envconfig:"PGPORT"`
 	User       string        `envconfig:"PGUSER"`

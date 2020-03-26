@@ -9,11 +9,11 @@ import (
 func NewCache(cfg *config.Config) *ristretto.Cache {
 	c, err := ristretto.NewCache(&ristretto.Config{
 		// number of keys to track frequency of (10M).
-		NumCounters: 1e6,
+		NumCounters: cfg.Ristretto.NumCounters,
 		// maximum cost of cache (1GB).
-		MaxCost:     1 << 30,
+		MaxCost:     cfg.Ristretto.MaxCost,
 		BufferItems: 64, // number of keys per Get buffer.
-		Metrics:     true,
+		Metrics:     cfg.Ristretto.Metrics,
 	})
 	if err != nil {
 		panic(errors.Wrap(err, "error get new ristretto cache"))

@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"context"
+	"github.com/aibotsoft/micro/config"
 	"github.com/jackc/pgx/v4"
 	"github.com/pkg/errors"
 )

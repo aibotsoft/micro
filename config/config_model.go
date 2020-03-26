@@ -17,8 +17,8 @@ type Config struct {
 
 type Service struct {
 	Name        string
-	Env         string
-	TestLoadEnv bool `envconfig:"TEST_LOAD_ENV" default:"true"`
+	Env         string `envconfig:"SERVICE_ENV"`
+	TestLoadEnv bool   `envconfig:"TEST_LOAD_ENV" default:"true"`
 	//Logging  Logging
 	//Web      Web
 }

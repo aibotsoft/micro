@@ -19,4 +19,5 @@ func TestLoadEnv(t *testing.T) {
 func TestNew(t *testing.T) {
 	cfg := config.New()
 	assert.Equal(t, true, cfg.Service.TestLoadEnv)
+	assert.Equal(t, "dev", cfg.Service.Env)
 }

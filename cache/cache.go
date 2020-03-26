@@ -19,5 +19,4 @@ func NewCache(cfg *config.Config) *ristretto.Cache {
 		panic(errors.Wrap(err, "error get new ristretto cache"))
 	}
 	return c
-
 }

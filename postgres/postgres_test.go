@@ -10,17 +10,14 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	cfg := config.New()
-	if cfg.Service.Env != "dev" {
-		return
-	}
-	t.Log(cfg.Service.Env)
 	gotenv.Must(gotenv.Load, "../.env")
+	cfg := config.New()
 	assert.Equal(t, 5*time.Second, cfg.Postgres.Timeout)
-	assert.NotEmpty(t, cfg.Postgres.Port)
+	assert.NotEmpty(t, cfg.Postgres.Timeout, cfg.Postgres.Timeout)
+	assert.NotEmpty(t, cfg.Postgres.Port, cfg.Postgres)
+	assert.NotEmpty(t, cfg.Postgres.User)
 	db, err := postgres.New(cfg)
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, db)
 	}
-
 }

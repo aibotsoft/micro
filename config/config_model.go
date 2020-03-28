@@ -27,9 +27,10 @@ type ProxyService struct {
 	CollectPeriod time.Duration `default:"60s"`
 	CollectUrl    string        `default:"https://www.sslproxies.org/"`
 
-	HttpTimeout time.Duration `default:"5s"`
-	GRPCTimeout time.Duration `default:"1s"`
-	GRPCPort    int           `default:"50051"`
+	HttpTimeout  time.Duration `default:"5s"`
+	GRPCTimeout  time.Duration `default:"1s"`
+	GRPCPort     int           `default:"50051"`
+	CheckTimeout time.Duration `default:"10s"`
 }
 
 type Broker struct {

@@ -16,7 +16,7 @@ func TestNew(t *testing.T) {
 	assert.NotEmpty(t, cfg.Postgres.Timeout, cfg.Postgres.Timeout)
 	assert.NotEmpty(t, cfg.Postgres.Port, cfg.Postgres)
 	assert.NotEmpty(t, cfg.Postgres.User)
-	db, err := postgres.New(cfg)
+	db, err := postgres.Connect(cfg)
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, db)
 	}

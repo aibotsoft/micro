@@ -31,6 +31,7 @@ type ProxyService struct {
 	GRPCTimeout  time.Duration `default:"1s"`
 	GRPCPort     int           `default:"50051"`
 	CheckTimeout time.Duration `default:"10s"`
+	CheckPeriod  time.Duration `default:"10s"`
 }
 
 type Broker struct {

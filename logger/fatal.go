@@ -12,3 +12,10 @@ func Fatal(err error, log *zap.SugaredLogger, message string) {
 	}
 	log.Fatal(errors.WithMessage(err, message))
 }
+
+// Panic logs a message at PanicLevel. The logger then panics, even if logging at PanicLevel is disabled
+func Panic(err error, log *zap.SugaredLogger, message string) {
+	if err != nil {
+		log.Desugar().Panic(message, zap.Error(err))
+	}
+}

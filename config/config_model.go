@@ -6,32 +6,43 @@ import (
 
 // Config provides the system configuration.
 type Config struct {
-	Service      Service
-	Broker       Broker
-	Postgres     Postgres
+	Service Service
+	Mssql   Mssql
+	//Broker       Broker
+	//Pg     Pg
 	ProxyService ProxyService
-	Ristretto    Ristretto
+	//Ristretto    Ristretto
 	//Logging  Logging
 	//Web      Web
 }
+type Mssql struct {
+	Host        string `envconfig:"default=localhost"`
+	Port        string `envconfig:"default=1433"`
+	User        string `envconfig:"default=sa"`
+	Password    string `envconfig:"default=Password"`
+	Database    string `envconfig:"default=#temp"`
+	AppName     string `envconfig:"default=no name"`
+	DialTimeout string `envconfig:"default=10"`
+	KeepAlive   string `envconfig:"default=1440"`
+	PacketSize  string `envconfig:"default=4096"`
+	Log         string `envconfig:"default=0"`
 
+	ConnTimeout time.Duration `envconfig:"default=10s"`
+}
 type Service struct {
-	Name        string
-	Env         string `envconfig:"SERVICE_ENV"`
-	TestLoadEnv bool   `envconfig:"TEST_LOAD_ENV" default:"true"`
-	//Logging  Logging
-	//Web      Web
+	Name    string `envconfig:"default=no name"`
+	Env     string `envconfig:"default=dev"`
+	TestEnv bool   `envconfig:"default=false"`
 }
-
 type ProxyService struct {
-	CollectPeriod time.Duration `default:"60s"`
-	CollectUrl    string        `default:"https://www.sslproxies.org/"`
+	CollectPeriod time.Duration `envconfig:"default=60s"`
+	CollectUrl    string        `envconfig:"default=https://www.sslproxies.org/"`
 
-	HttpTimeout  time.Duration `default:"5s"`
-	GRPCTimeout  time.Duration `default:"1s"`
-	GRPCPort     int           `default:"50051"`
-	CheckTimeout time.Duration `default:"10s"`
-	CheckPeriod  time.Duration `default:"10s"`
+	CollectHttpTimeout time.Duration `envconfig:"default=5s"`
+	GrpcTimeout        time.Duration `envconfig:"default=1s"`
+	GrpcPort           int           `envconfig:"default=50051"`
+	CheckTimeout       time.Duration `envconfig:"default=10s"`
+	CheckPeriod        time.Duration `envconfig:"default=10s"`
 }
 
 type Broker struct {
@@ -41,7 +52,7 @@ type Broker struct {
 	ReconnectWait  time.Duration `envconfig:"NATS_RECONNECT_WAIT"`
 	Timeout        time.Duration `envconfig:"NATS_TIMEOUT"`
 }
-type Postgres struct {
+type Pg struct {
 	Host       string        `envconfig:"PGHOST"`
 	Port       string        `envconfig:"PGPORT"`
 	User       string        `envconfig:"PGUSER"`

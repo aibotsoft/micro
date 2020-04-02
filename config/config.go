@@ -1,25 +1,20 @@
 package config
 
 import (
-	"github.com/kelseyhightower/envconfig"
+	"github.com/vrischmann/envconfig"
+	"log"
 	"os"
 )
 
 const envFileName = ".env"
 const devEnv = "dev"
 
-//func init() {
-//	if os.Getenv("SERVICE_ENV") == devEnv {
-//		MustLoadEnv()
-//	}
-//}
-
 // New returns the settings from the environment.
 func New() *Config {
 	cfg := &Config{}
-	err := envconfig.Process("", cfg)
+	err := envconfig.Init(cfg)
 	if err != nil {
-		panic(err)
+		log.Print(err)
 	}
 	return cfg
 }

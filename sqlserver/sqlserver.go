@@ -3,6 +3,8 @@ package sqlserver
 import (
 	"database/sql"
 	"github.com/aibotsoft/micro/config"
+	_ "github.com/denisenkom/go-mssqldb"
+
 	"net"
 	"net/url"
 )

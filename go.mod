@@ -3,6 +3,7 @@ module github.com/aibotsoft/micro
 go 1.14
 
 require (
+	github.com/denisenkom/go-mssqldb v0.0.0-20200206145737-bbfc9a55622e
 	github.com/dgraph-io/ristretto v0.0.2
 	github.com/jackc/pgx/v4 v4.5.0
 	github.com/pkg/errors v0.9.1

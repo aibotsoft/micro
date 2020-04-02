@@ -11,7 +11,7 @@ type Config struct {
 	//Broker       Broker
 	//Pg     Pg
 	ProxyService ProxyService
-	//Ristretto    Ristretto
+	Ristretto    Ristretto
 	//Logging  Logging
 	//Web      Web
 }

@@ -42,5 +42,9 @@ func MustConnect(cfg *config.Config) *sql.DB {
 	if err != nil {
 		panic(err)
 	}
+	err = db.Ping()
+	if err != nil {
+		panic(err)
+	}
 	return db
 }

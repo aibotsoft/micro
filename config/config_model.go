@@ -35,8 +35,11 @@ type Service struct {
 	TestEnv bool   `envconfig:"default=false"`
 }
 type ProxyService struct {
-	CollectPeriod time.Duration `envconfig:"default=60s"`
-	CollectUrl    string        `envconfig:"default=https://www.sslproxies.org/"`
+	CollectPeriod        time.Duration `envconfig:"default=60s"`
+	DeleteBadProxyPeriod time.Duration `envconfig:"default=300s"`
+	DeleteOldStatPeriod  time.Duration `envconfig:"default=300s"`
+
+	CollectUrl string `envconfig:"default=https://www.sslproxies.org/"`
 
 	CollectHttpTimeout time.Duration `envconfig:"default=5s"`
 	GrpcTimeout        time.Duration `envconfig:"default=1s"`

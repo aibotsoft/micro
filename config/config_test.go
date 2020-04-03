@@ -52,6 +52,8 @@ func TestMssqlConfig(t *testing.T) {
 		_ = os.Setenv("PROXY_SERVICE_GRPC_PORT", "66")
 		_ = os.Setenv("PROXY_SERVICE_CHECK_TIMEOUT", "66s")
 		_ = os.Setenv("PROXY_SERVICE_check_period", "66s")
+		_ = os.Setenv("PROXY_SERVICE_delete_bad_proxy_period", "66s")
+		_ = os.Setenv("PROXY_SERVICE_delete_old_stat_period", "66s")
 		cfg := config.New()
 		assert.Equal(t, time.Duration(66000000000), cfg.ProxyService.CollectPeriod)
 		assert.Equal(t, "https://test.test", cfg.ProxyService.CollectUrl)
@@ -61,6 +63,8 @@ func TestMssqlConfig(t *testing.T) {
 		assert.Equal(t, 66, cfg.ProxyService.GrpcPort)
 		assert.Equal(t, time.Duration(66000000000), cfg.ProxyService.CheckTimeout)
 		assert.Equal(t, time.Duration(66000000000), cfg.ProxyService.CheckPeriod)
+		assert.Equal(t, time.Duration(66000000000), cfg.ProxyService.DeleteBadProxyPeriod)
+		assert.Equal(t, time.Duration(66000000000), cfg.ProxyService.DeleteOldStatPeriod)
 	})
 	t.Run("ristretto config", func(t *testing.T) {
 		_ = os.Setenv("Ristretto_Num_Counters", "66")

@@ -1,4 +1,4 @@
-package migrate
+package mig
 
 import (
 	"database/sql"
@@ -6,7 +6,8 @@ import (
 	"github.com/aibotsoft/micro/config"
 	"github.com/golang-migrate/migrate/v4"
 	//_ "github.com/denisenkom/go-mssqldb"
-	_ "github.com/golang-migrate/migrate/v4/database/sqlserver"
+	//_ "github.com/golang-migrate/migrate/v4/database/sqlserver"
+	_ "github.com/golang-migrate/migrate/v4/source/github"
 
 	stub "github.com/golang-migrate/migrate/v4/database/sqlserver"
 	"github.com/pkg/errors"
@@ -14,7 +15,7 @@ import (
 	"time"
 )
 
-func migrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sql.DB) error {
+func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sql.DB) error {
 	start := time.Now()
 	log.Info("begin db migration..")
 	instance, err := stub.WithInstance(db, &stub.Config{SchemaName: "dbo", DatabaseName: cfg.Mssql.Database})

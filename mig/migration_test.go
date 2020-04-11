@@ -1,4 +1,4 @@
-package migrate
+package mig
 
 import (
 	"github.com/aibotsoft/micro/config"
@@ -12,7 +12,7 @@ func TestUp(t *testing.T) {
 	cfg := config.New()
 	log := logger.New()
 	db := sqlserver.MustConnect(cfg)
-	err := migrateUp(cfg, log, db)
+	err := MigrateUp(cfg, log, db)
 	assert.NoError(t, err)
 }
 

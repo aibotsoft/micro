@@ -76,4 +76,17 @@ func TestMssqlConfig(t *testing.T) {
 		assert.Equal(t, true, cfg.Ristretto.Metrics)
 
 	})
+	t.Run("migrate config", func(t *testing.T) {
+		cfg := config.New()
+		assert.Equal(t, "", cfg.Migrate.User)
+		assert.Equal(t, "", cfg.Migrate.Token)
+
+		_ = os.Setenv("migrate_user", "test_user")
+		_ = os.Setenv("migrate_token", "test_token")
+		cfg = config.New()
+
+		assert.Equal(t, "test_user", cfg.Migrate.User)
+		assert.Equal(t, "test_token", cfg.Migrate.Token)
+
+	})
 }

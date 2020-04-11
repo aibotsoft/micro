@@ -13,7 +13,7 @@ type Config struct {
 	ProxyService ProxyService
 	Ristretto    Ristretto
 	//Logging  Logging
-	//Web      Web
+	Migrate Migrate
 }
 type Mssql struct {
 	Host        string `envconfig:"default=localhost"`
@@ -34,6 +34,12 @@ type Service struct {
 	Env     string `envconfig:"default=dev"`
 	TestEnv bool   `envconfig:"default=false"`
 }
+
+type Migrate struct {
+	User  string `envconfig:"optional"`
+	Token string `envconfig:"optional"`
+}
+
 type ProxyService struct {
 	CollectPeriod        time.Duration `envconfig:"default=60s"`
 	DeleteBadProxyPeriod time.Duration `envconfig:"default=300s"`

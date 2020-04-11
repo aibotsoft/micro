@@ -41,5 +41,9 @@ func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sql.DB) error {
 		return errors.Wrap(err, "migrateInstance.Up error")
 	}
 	log.Info("migration took: ", time.Since(start).Milliseconds())
+	newVersion, dirty, err := migrateInstance.Version()
+	log.Info("new db version: ", newVersion, ", is dirty: ", dirty)
+
+	log.Info("migration took: ", time.Since(start).Milliseconds())
 	return nil
 }

@@ -1,11 +1,21 @@
 package migrate
 
-//func TestUp(t *testing.T) {
-//	db, err := storage.NewStorage()
-//	assert.Nil(t, err)
-//	err = Up(db)
-//	assert.Nil(t, err)
-//}
+import (
+	"github.com/aibotsoft/micro/config"
+	"github.com/aibotsoft/micro/logger"
+	"github.com/aibotsoft/micro/sqlserver"
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
+
+func TestUp(t *testing.T) {
+	cfg := config.New()
+	log := logger.New()
+	db := sqlserver.MustConnect(cfg)
+	err := migrateUp(cfg, log, db)
+	assert.NoError(t, err)
+}
+
 //
 //func TestUpTo(t *testing.T) {
 //	targetVersion := 1

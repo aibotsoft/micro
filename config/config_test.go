@@ -28,7 +28,7 @@ func TestMssqlConfig(t *testing.T) {
 		_ = os.Setenv("MSSQL_APP_NAME", "test_appName")
 		_ = os.Setenv("MSSQL_dial_Timeout", "66")
 		_ = os.Setenv("MSSQL_Keep_Alive", "66")
-		_ = os.Setenv("MSSQL_Packet_Size", "66")
+		_ = os.Setenv("MSSQL_PACKET_SIZE", "66")
 		_ = os.Setenv("MSSQL_Log", "66")
 		_ = os.Setenv("MSSQL_CONN_Timeout", "66s")
 		cfg := config.New()

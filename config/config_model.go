@@ -13,7 +13,10 @@ type Config struct {
 	ProxyService ProxyService
 	Ristretto    Ristretto
 	//Logging  Logging
-	Migrate Migrate
+	Migrate        Migrate
+	SurebetService SurebetService
+	PinService     PinService
+	SboService     SboService
 }
 type Mssql struct {
 	Host        string `envconfig:"default=localhost"`
@@ -52,6 +55,22 @@ type ProxyService struct {
 	GrpcPort           int           `envconfig:"default=50051"`
 	CheckTimeout       time.Duration `envconfig:"default=10s"`
 	CheckPeriod        time.Duration `envconfig:"default=10s"`
+}
+
+type SurebetService struct {
+	GrpcTimeout time.Duration `envconfig:"default=1s"`
+	GrpcPort    string        `envconfig:"default=50051"`
+}
+
+type PinService struct {
+	GrpcPort string `envconfig:"default=50051"`
+	User     string `envconfig:"optional"`
+	Pass     string `envconfig:"optional"`
+}
+type SboService struct {
+	GrpcPort string `envconfig:"default=50051"`
+	User     string `envconfig:"optional"`
+	Pass     string `envconfig:"optional"`
 }
 
 type Broker struct {

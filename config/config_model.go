@@ -17,6 +17,7 @@ type Config struct {
 	SurebetService SurebetService
 	PinService     PinService
 	SboService     SboService
+	FortedService  FortedService
 }
 type Mssql struct {
 	Host        string `envconfig:"default=localhost"`
@@ -60,6 +61,10 @@ type ProxyService struct {
 type SurebetService struct {
 	GrpcTimeout time.Duration `envconfig:"default=1s"`
 	GrpcPort    string        `envconfig:"default=50051"`
+}
+
+type FortedService struct {
+	GrpcPort string `envconfig:"default=50051"`
 }
 
 type PinService struct {

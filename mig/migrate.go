@@ -40,12 +40,12 @@ func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sql.DB) error {
 	err = migrateInstance.Up()
 	switch {
 	case err == migrate.ErrNoChange:
-		log.Info("no change, ", "migration took: ", time.Since(start).Milliseconds())
+		log.Infow("migration done, no change", "time", time.Since(start))
 		return nil
 	case err != nil:
 		return errors.Wrap(err, "migrateInstance.Up error")
 	}
 	newVersion, dirty, err := migrateInstance.Version()
-	log.Info("new db version: ", newVersion, ", is dirty: ", dirty, "migration took: ", time.Since(start).Milliseconds())
+	log.Infow("migration done", "db_version: ", newVersion, "is dirty", dirty, "time", time.Since(start))
 	return nil
 }

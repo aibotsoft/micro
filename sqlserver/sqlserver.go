@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"github.com/aibotsoft/micro/config"
 	_ "github.com/denisenkom/go-mssqldb"
+	"github.com/jmoiron/sqlx"
 
 	"net"
 	"net/url"
@@ -46,5 +47,19 @@ func MustConnect(cfg *config.Config) *sql.DB {
 	if err != nil {
 		panic(err)
 	}
+	return db
+}
+
+func MustConnectX(cfg *config.Config) *sqlx.DB {
+	connString := BuildConnString(cfg)
+	db, err := sqlx.Open("sqlserver", connString)
+	if err != nil {
+		panic(err)
+	}
+	err = db.Ping()
+	if err != nil {
+		panic(err)
+	}
+	db.MapperFunc(func(s string) string { return s })
 	return db
 }

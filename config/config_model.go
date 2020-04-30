@@ -71,11 +71,13 @@ type PinService struct {
 	GrpcPort string `envconfig:"default=50051"`
 	User     string `envconfig:"optional"`
 	Pass     string `envconfig:"optional"`
+	Debug    bool   `envconfig:"default=false"`
 }
 type SboService struct {
 	GrpcPort string `envconfig:"default=50051"`
 	User     string `envconfig:"optional"`
 	Pass     string `envconfig:"optional"`
+	Debug    bool   `envconfig:"default=false"`
 }
 
 type Broker struct {

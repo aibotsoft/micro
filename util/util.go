@@ -1,6 +1,12 @@
 package util
 
-type MyUtil struct {
-	UtilName string
-	Fuck     string
+import (
+	"time"
+)
+
+func UnixMsNow() int64 {
+	return time.Now().UnixNano() / 1000000
+}
+func UnixUsNow() int64 {
+	return time.Now().UnixNano() / 1000
 }

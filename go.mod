@@ -8,6 +8,7 @@ require (
 	github.com/golang-migrate/migrate/v4 v4.10.0
 	github.com/jackc/pgx/v4 v4.5.0
 	github.com/pkg/errors v0.9.1
+	github.com/shopspring/decimal v0.0.0-20180709203117-cd690d0c9e24
 	github.com/stretchr/testify v1.5.1
 	github.com/subosito/gotenv v1.2.0
 	github.com/vrischmann/envconfig v1.2.0

@@ -6,18 +6,22 @@ import (
 
 // Config provides the system configuration.
 type Config struct {
-	Service Service
-	Mssql   Mssql
-	//Broker       Broker
-	//Pg     Pg
-	ProxyService ProxyService
-	Ristretto    Ristretto
-	//Logging  Logging
+	Service        Service
+	Mssql          Mssql
+	ProxyService   ProxyService
+	Ristretto      Ristretto
 	Migrate        Migrate
 	SurebetService SurebetService
 	PinService     PinService
 	SboService     SboService
 	FortedService  FortedService
+	Telegram       Telegram
+}
+type Telegram struct {
+	Token  string `envconfig:"optional"`
+	ChatId string `envconfig:"optional"`
+	Host   string `envconfig:"default=https://api.telegram.org"`
+	Debug  bool   `envconfig:"default=false"`
 }
 type Mssql struct {
 	Host        string `envconfig:"default=localhost"`

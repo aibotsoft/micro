@@ -14,8 +14,10 @@ type Config struct {
 	SurebetService SurebetService
 	PinService     PinService
 	SboService     SboService
+	DafService     DafService
 	FortedService  FortedService
 	Telegram       Telegram
+	ConfigService  ConfigService
 }
 type Telegram struct {
 	Token  string `envconfig:"optional"`
@@ -38,9 +40,10 @@ type Mssql struct {
 	ConnTimeout time.Duration `envconfig:"default=10s"`
 }
 type Service struct {
-	Name    string `envconfig:"default=no name"`
-	Env     string `envconfig:"default=dev"`
-	TestEnv bool   `envconfig:"default=false"`
+	Name     string `envconfig:"default=no name"`
+	Env      string `envconfig:"default=dev"`
+	TestEnv  bool   `envconfig:"default=false"`
+	GrpcPort string `envconfig:"default=50051"`
 }
 
 type Migrate struct {
@@ -73,14 +76,18 @@ type FortedService struct {
 
 type PinService struct {
 	GrpcPort string `envconfig:"default=50051"`
-	User     string `envconfig:"optional"`
-	Pass     string `envconfig:"optional"`
 	Debug    bool   `envconfig:"default=false"`
 }
 type SboService struct {
 	GrpcPort string `envconfig:"default=50051"`
-	User     string `envconfig:"optional"`
-	Pass     string `envconfig:"optional"`
+	Debug    bool   `envconfig:"default=false"`
+}
+type DafService struct {
+	GrpcPort string `envconfig:"default=50051"`
+	Debug    bool   `envconfig:"default=false"`
+}
+type ConfigService struct {
+	GrpcPort string `envconfig:"default=50051"`
 	Debug    bool   `envconfig:"default=false"`
 }
 

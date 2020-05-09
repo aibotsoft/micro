@@ -1,10 +1,11 @@
 package mig
 
 import (
-	"database/sql"
 	"fmt"
 	"github.com/aibotsoft/micro/config"
 	"github.com/golang-migrate/migrate/v4"
+	"github.com/jmoiron/sqlx"
+
 	//_ "github.com/denisenkom/go-mssqldb"
 	//_ "github.com/golang-migrate/migrate/v4/database/sqlserver"
 	_ "github.com/golang-migrate/migrate/v4/source/github"
@@ -15,10 +16,10 @@ import (
 	"time"
 )
 
-func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sql.DB) error {
+func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sqlx.DB) error {
 	start := time.Now()
 	log.Info("begin db migration..")
-	instance, err := stub.WithInstance(db, &stub.Config{SchemaName: "dbo", DatabaseName: cfg.Mssql.Database})
+	instance, err := stub.WithInstance(db.DB, &stub.Config{SchemaName: "dbo", DatabaseName: cfg.Mssql.Database})
 	if err != nil {
 		return errors.Wrap(err, "WithInstance error")
 	}

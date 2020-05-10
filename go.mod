@@ -3,7 +3,7 @@ module github.com/aibotsoft/micro
 go 1.14
 
 require (
-	github.com/aibotsoft/gen v0.0.0-20200426084831-65c8a4083243
+	github.com/aibotsoft/gen v0.0.0-20200510070600-b4df9155b7be
 	github.com/denisenkom/go-mssqldb v0.0.0-20200206145737-bbfc9a55622e
 	github.com/dgraph-io/ristretto v0.0.2
 	github.com/go-resty/resty/v2 v2.2.0
@@ -18,3 +18,4 @@ require (
 	go.uber.org/zap v1.14.1
 	google.golang.org/grpc v1.28.0
 )
+replace github.com/aibotsoft/gen => ../gen

@@ -13,7 +13,6 @@ type Config struct {
 	Migrate       Migrate
 	PinService    PinService
 	SboService    SboService
-	DafService    DafService
 	FortedService FortedService
 	Telegram      Telegram
 }
@@ -37,11 +36,13 @@ type Mssql struct {
 	ConnTimeout time.Duration `envconfig:"default=10s"`
 }
 type Service struct {
-	Name       string `envconfig:"default=no name"`
-	Env        string `envconfig:"default=dev"`
-	TestEnv    bool   `envconfig:"default=false"`
-	GrpcPort   string `envconfig:"default=50051"`
-	ConfigPort string `envconfig:"default=50055"`
+	Name        string        `envconfig:"default=no name"`
+	Env         string        `envconfig:"default=dev"`
+	TestEnv     bool          `envconfig:"default=false"`
+	GrpcPort    string        `envconfig:"default=50051"`
+	ConfigPort  string        `envconfig:"default=50055"`
+	Debug       bool          `envconfig:"default=false"`
+	GrpcTimeout time.Duration `envconfig:"default=1s"`
 }
 
 type Migrate struct {
@@ -75,10 +76,6 @@ type SboService struct {
 	GrpcPort string `envconfig:"default=50051"`
 	Debug    bool   `envconfig:"default=false"`
 }
-type DafService struct {
-	GrpcPort string `envconfig:"default=50051"`
-	Debug    bool   `envconfig:"default=false"`
-}
 
 type Broker struct {
 	Url            string        `envconfig:"NATS_URL"`
@@ -97,46 +94,3 @@ type Pg struct {
 	DisableTLS bool          `envconfig:"PGDISABLETLS"`
 	Timeout    time.Duration `envconfig:"PGTIMEOUT" default:"5s"`
 }
-
-//type (
-//
-//	//// Web provides api server configuration.
-//	//Web struct {
-//	//	APIHost      string
-//	//	ReadTimeout  time.Duration
-//	//	WriteTimeout time.Duration
-//	//}
-//	//// Logging provides the logging configuration.
-//	//Logging struct {
-//	//	Level  string `envconfig:"LOG_LEVEL"`
-//	//	Trace  bool   `envconfig:"DRONE_LOGS_TRACE"`
-//	//	Color  bool   `envconfig:"DRONE_LOGS_COLOR"`
-//	//	Pretty bool   `envconfig:"DRONE_LOGS_PRETTY"`
-//	//	Text   bool   `envconfig:"DRONE_LOGS_TEXT"`
-//	//}
-//	//// Database provides the database configuration.
-//)
-//type (
-//	// Config provides the system configuration.
-//	Config struct {
-//		Database Database
-//		Logging  Logging
-//		Web      Web
-//	}
-//	// Web provides api server configuration.
-//	Web struct {
-//		APIHost      string
-//		ReadTimeout  time.Duration
-//		WriteTimeout time.Duration
-//	}
-//	// Logging provides the logging configuration.
-//	Logging struct {
-//		Level  string `envconfig:"LOG_LEVEL"`
-//		Trace  bool   `envconfig:"DRONE_LOGS_TRACE"`
-//		Color  bool   `envconfig:"DRONE_LOGS_COLOR"`
-//		Pretty bool   `envconfig:"DRONE_LOGS_PRETTY"`
-//		Text   bool   `envconfig:"DRONE_LOGS_TEXT"`
-//	}
-//	// Database provides the database configuration.
-
-//)

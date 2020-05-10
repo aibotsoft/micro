@@ -6,18 +6,16 @@ import (
 
 // Config provides the system configuration.
 type Config struct {
-	Service        Service
-	Mssql          Mssql
-	ProxyService   ProxyService
-	Ristretto      Ristretto
-	Migrate        Migrate
-	SurebetService SurebetService
-	PinService     PinService
-	SboService     SboService
-	DafService     DafService
-	FortedService  FortedService
-	Telegram       Telegram
-	ConfigService  ConfigService
+	Service       Service
+	Mssql         Mssql
+	ProxyService  ProxyService
+	Ristretto     Ristretto
+	Migrate       Migrate
+	PinService    PinService
+	SboService    SboService
+	DafService    DafService
+	FortedService FortedService
+	Telegram      Telegram
 }
 type Telegram struct {
 	Token  string `envconfig:"optional"`
@@ -26,24 +24,24 @@ type Telegram struct {
 	Debug  bool   `envconfig:"default=false"`
 }
 type Mssql struct {
-	Host        string `envconfig:"default=localhost"`
-	Port        string `envconfig:"default=1433"`
-	User        string `envconfig:"default=sa"`
-	Password    string `envconfig:"default=Password"`
-	Database    string `envconfig:"default=#temp"`
-	AppName     string `envconfig:"default=no name"`
-	DialTimeout string `envconfig:"default=10"`
-	KeepAlive   string `envconfig:"default=1440"`
-	PacketSize  string `envconfig:"default=4096"`
-	Log         string `envconfig:"default=0"`
-
+	Host        string        `envconfig:"default=localhost"`
+	Port        string        `envconfig:"default=1433"`
+	User        string        `envconfig:"default=sa"`
+	Password    string        `envconfig:"default=Password"`
+	Database    string        `envconfig:"default=#temp"`
+	AppName     string        `envconfig:"default=no name"`
+	DialTimeout string        `envconfig:"default=10"`
+	KeepAlive   string        `envconfig:"default=1440"`
+	PacketSize  string        `envconfig:"default=4096"`
+	Log         string        `envconfig:"default=0"`
 	ConnTimeout time.Duration `envconfig:"default=10s"`
 }
 type Service struct {
-	Name     string `envconfig:"default=no name"`
-	Env      string `envconfig:"default=dev"`
-	TestEnv  bool   `envconfig:"default=false"`
-	GrpcPort string `envconfig:"default=50051"`
+	Name       string `envconfig:"default=no name"`
+	Env        string `envconfig:"default=dev"`
+	TestEnv    bool   `envconfig:"default=false"`
+	GrpcPort   string `envconfig:"default=50051"`
+	ConfigPort string `envconfig:"default=50055"`
 }
 
 type Migrate struct {
@@ -65,11 +63,6 @@ type ProxyService struct {
 	CheckPeriod        time.Duration `envconfig:"default=10s"`
 }
 
-type SurebetService struct {
-	GrpcTimeout time.Duration `envconfig:"default=1s"`
-	GrpcPort    string        `envconfig:"default=50051"`
-}
-
 type FortedService struct {
 	GrpcPort string `envconfig:"default=50051"`
 }
@@ -83,10 +76,6 @@ type SboService struct {
 	Debug    bool   `envconfig:"default=false"`
 }
 type DafService struct {
-	GrpcPort string `envconfig:"default=50051"`
-	Debug    bool   `envconfig:"default=false"`
-}
-type ConfigService struct {
 	GrpcPort string `envconfig:"default=50051"`
 	Debug    bool   `envconfig:"default=false"`
 }

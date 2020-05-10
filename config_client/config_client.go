@@ -27,6 +27,9 @@ func (c *ConfClient) Close() {
 		c.log.Error(err)
 	}
 }
+func (c *ConfClient) GetCurrency(ctx context.Context) (string, error) {
+
+}
 func (c *ConfClient) GetGrpcAddr(ctx context.Context) (string, error) {
 	got, err := c.client.GetConfig(ctx, &pb.GetConfigRequest{ServiceName: c.cfg.Service.Name})
 	if err != nil {

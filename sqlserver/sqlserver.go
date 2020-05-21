@@ -15,7 +15,7 @@ import (
 func BuildConnString(cfg *config.Config) string {
 	query := url.Values{}
 	query.Add("database", cfg.Mssql.Database)
-	query.Add("app name", cfg.Mssql.AppName)
+	query.Add("app name", cfg.Service.Name)
 
 	//in seconds (default is 15), set to 0 for no timeout
 	query.Add("dial timeout", cfg.Mssql.DialTimeout)

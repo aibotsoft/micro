@@ -7,19 +7,25 @@ import (
 	"testing"
 )
 
-func InitHelper(t *testing.T) *Telegram {
-	t.Helper()
+var tel *Telegram
+
+func TestMain(m *testing.M) {
 	cfg := config.New()
 	log := logger.New()
-	return New(cfg, log)
+	tel = New(cfg, log)
+	m.Run()
 }
+
 func TestTelegram_Send(t *testing.T) {
-	tel := InitHelper(t)
 	tel.Send("test")
 }
 
 func TestTelegram_Ping(t *testing.T) {
-	tel := InitHelper(t)
 	err := tel.Ping()
 	assert.NoError(t, err)
+}
+
+func TestTelegram_Sendf(t *testing.T) {
+	tel.Sendf("asdf %v, %v, %s", 1, "b", "c")
+	t.Log("i am")
 }

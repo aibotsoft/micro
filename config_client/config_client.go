@@ -20,6 +20,13 @@ type ConfClient struct {
 	client pb.ConfClient
 }
 
+func (c *ConfClient) Ping(ctx context.Context) error {
+	_, err := c.client.Ping(ctx, &pb.PingRequest{})
+	if err != nil {
+		return errors.Wrap(err, "ping error")
+	}
+	return nil
+}
 func (c *ConfClient) Close() {
 	c.log.Debug("begin close conn")
 	err := c.conn.Close()
@@ -27,11 +34,23 @@ func (c *ConfClient) Close() {
 		c.log.Error(err)
 	}
 }
-func (c *ConfClient) GetCurrency(ctx context.Context) (string, error) {
-
+func (c *ConfClient) GetServices(ctx context.Context) ([]pb.BetService, error) {
+	resp, err := c.client.GetServices(ctx, &pb.GetServicesRequest{})
+	if err != nil {
+		return nil, errors.Wrap(err, "get services error")
+	}
+	return resp.GetServices(), nil
 }
-func (c *ConfClient) GetGrpcAddr(ctx context.Context) (string, error) {
-	got, err := c.client.GetConfig(ctx, &pb.GetConfigRequest{ServiceName: c.cfg.Service.Name})
+func (c *ConfClient) GetCurrency(ctx context.Context) ([]pb.Currency, error) {
+	resp, err := c.client.GetCurrency(ctx, &pb.GetCurrencyRequest{})
+	if err != nil {
+		return nil, errors.Wrap(err, "get currency error")
+	}
+	return resp.GetCurrencyList(), nil
+}
+
+func (c *ConfClient) GetGrpcAddr(ctx context.Context, serviceName string) (string, error) {
+	got, err := c.client.GetConfig(ctx, &pb.GetConfigRequest{ServiceName: serviceName})
 	if err != nil {
 		return "", errors.Wrapf(err, "get grpc addr error for service %q", c.cfg.Service.Name)
 	}

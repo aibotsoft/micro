@@ -15,6 +15,17 @@ type Telegram struct {
 	baseUrl string
 }
 
+func (t *Telegram) Sendf(format string, s ...interface{}) {
+	msg := fmt.Sprintf(format, s...)
+
+	_, err := t.client.SetDebug(t.cfg.Telegram.Debug).R().EnableTrace().
+		SetQueryParam("text", msg).
+		SetQueryParam("chat_id", t.cfg.Telegram.ChatId).
+		Post(t.baseUrl + "sendMessage")
+	if err != nil {
+		t.log.Error(err)
+	}
+}
 func (t *Telegram) Send(msg string) {
 	_, err := t.client.SetDebug(t.cfg.Telegram.Debug).R().EnableTrace().
 		SetQueryParam("text", msg).

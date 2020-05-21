@@ -6,15 +6,14 @@ import (
 
 // Config provides the system configuration.
 type Config struct {
-	Service       Service
-	Mssql         Mssql
-	ProxyService  ProxyService
-	Ristretto     Ristretto
-	Migrate       Migrate
-	PinService    PinService
-	SboService    SboService
-	FortedService FortedService
-	Telegram      Telegram
+	Service      Service
+	Mssql        Mssql
+	ProxyService ProxyService
+	Ristretto    Ristretto
+	Migrate      Migrate
+	PinService   PinService
+	SboService   SboService
+	Telegram     Telegram
 }
 type Telegram struct {
 	Token  string `envconfig:"optional"`
@@ -62,10 +61,6 @@ type ProxyService struct {
 	GrpcPort           int           `envconfig:"default=50051"`
 	CheckTimeout       time.Duration `envconfig:"default=10s"`
 	CheckPeriod        time.Duration `envconfig:"default=10s"`
-}
-
-type FortedService struct {
-	GrpcPort string `envconfig:"default=50051"`
 }
 
 type PinService struct {

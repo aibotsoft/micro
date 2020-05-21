@@ -18,7 +18,7 @@ func TestMain(m *testing.M) {
 	c.Close()
 }
 func TestConfClient_GetAccount(t *testing.T) {
-	got, err := c.GetAccount(context.Background(), "hello")
+	got, err := c.GetAccount(context.Background(), "Sbobet")
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, got)
 	}

@@ -34,6 +34,15 @@ func (c *ConfClient) Close() {
 		c.log.Error(err)
 	}
 }
+func (c *ConfClient) GetNetStatus(ctx context.Context) bool {
+	resp, err := c.client.GetNetStatus(ctx, &pb.GetNetStatusRequest{})
+	if err != nil {
+		c.log.Info(err)
+		return false
+	}
+	return resp.GetStatus()
+}
+
 func (c *ConfClient) GetServices(ctx context.Context) ([]pb.BetService, error) {
 	resp, err := c.client.GetServices(ctx, &pb.GetServicesRequest{})
 	if err != nil {

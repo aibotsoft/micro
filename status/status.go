@@ -3,8 +3,10 @@ package status
 const (
 	StatusOk             = "Ok"
 	StatusNotFound       = "NotFound"
+	MarketClosed         = "MarketClosed"
 	StatusError          = "Error"
 	StatusNotAccepted    = "NotAccepted"
+	AboveEventMax        = "AboveEventMax"
 	StatusDisabled       = "Disabled"
 	RegimeSurebet        = "Surebet"
 	OnlyCheck            = "OnlyCheck"

@@ -45,3 +45,4 @@ func RoundDown(value float64, roundValue float64) float64 {
 	res, _ := decimal.NewFromFloat(value).Div(rv).Floor().Mul(rv).Float64()
 	return res
 }
+func PtrFloat64(v float64) *float64 { return &v }

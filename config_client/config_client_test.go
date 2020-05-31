@@ -25,8 +25,13 @@ func TestConfClient_GetAccount(t *testing.T) {
 }
 func TestConfClient_GetGrpcAddr(t *testing.T) {
 	c.cfg.Service.Name = "config-service"
-	got, err := c.GetGrpcAddr(context.Background())
+	got, err := c.GetGrpcAddr(context.Background(), c.cfg.Service.Name)
 	if assert.NoError(t, err) {
 		assert.NotEmpty(t, got)
 	}
+}
+
+func TestConfClient_GetNetStatus(t *testing.T) {
+	status := c.GetNetStatus(context.Background())
+	assert.True(t, status)
 }

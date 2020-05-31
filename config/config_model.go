@@ -11,8 +11,6 @@ type Config struct {
 	ProxyService ProxyService
 	Ristretto    Ristretto
 	Migrate      Migrate
-	PinService   PinService
-	SboService   SboService
 	Telegram     Telegram
 }
 type Telegram struct {
@@ -53,23 +51,13 @@ type ProxyService struct {
 	CollectPeriod        time.Duration `envconfig:"default=60s"`
 	DeleteBadProxyPeriod time.Duration `envconfig:"default=300s"`
 	DeleteOldStatPeriod  time.Duration `envconfig:"default=300s"`
-
-	CollectUrl string `envconfig:"default=https://www.sslproxies.org/"`
+	CollectUrl           string        `envconfig:"default=https://www.sslproxies.org/"`
 
 	CollectHttpTimeout time.Duration `envconfig:"default=5s"`
 	GrpcTimeout        time.Duration `envconfig:"default=1s"`
 	GrpcPort           int           `envconfig:"default=50051"`
 	CheckTimeout       time.Duration `envconfig:"default=10s"`
 	CheckPeriod        time.Duration `envconfig:"default=10s"`
-}
-
-type PinService struct {
-	GrpcPort string `envconfig:"default=50051"`
-	Debug    bool   `envconfig:"default=false"`
-}
-type SboService struct {
-	GrpcPort string `envconfig:"default=50051"`
-	Debug    bool   `envconfig:"default=false"`
 }
 
 type Broker struct {

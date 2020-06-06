@@ -62,11 +62,11 @@ type ProxyService struct {
 }
 
 type Broker struct {
-	Url            string        `envconfig:"NATS_URL"`
-	AllowReconnect bool          `envconfig:"NATS_ALLOW_RECONNECT"`
-	MaxReconnect   int           `envconfig:"NATS_MAX_RECONNECT"`
-	ReconnectWait  time.Duration `envconfig:"NATS_RECONNECT_WAIT"`
-	Timeout        time.Duration `envconfig:"NATS_TIMEOUT"`
+	Url string `envconfig:"NATS_URL"`
+	//AllowReconnect bool          `envconfig:"NATS_ALLOW_RECONNECT"`
+	//MaxReconnect   int           `envconfig:"NATS_MAX_RECONNECT"`
+	//ReconnectWait  time.Duration `envconfig:"NATS_RECONNECT_WAIT"`
+	//Timeout        time.Duration `envconfig:"NATS_TIMEOUT"`
 }
 type Pg struct {
 	Host       string        `envconfig:"PGHOST"`

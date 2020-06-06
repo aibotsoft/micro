@@ -12,6 +12,7 @@ type Config struct {
 	Ristretto    Ristretto
 	Migrate      Migrate
 	Telegram     Telegram
+	Broker       Broker
 }
 type Telegram struct {
 	Token  string `envconfig:"optional"`

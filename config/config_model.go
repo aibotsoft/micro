@@ -62,7 +62,7 @@ type ProxyService struct {
 }
 
 type Broker struct {
-	Url string `envconfig:"NATS_URL"`
+	Url string `envconfig:"default=nats"`
 	//AllowReconnect bool          `envconfig:"NATS_ALLOW_RECONNECT"`
 	//MaxReconnect   int           `envconfig:"NATS_MAX_RECONNECT"`
 	//ReconnectWait  time.Duration `envconfig:"NATS_RECONNECT_WAIT"`

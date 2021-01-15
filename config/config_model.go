@@ -37,6 +37,7 @@ type Service struct {
 	Name        string        `envconfig:"default=no name"`
 	Env         string        `envconfig:"default=dev"`
 	TestEnv     bool          `envconfig:"default=false"`
+	GrpcHost    string        `envconfig:"default=0.0.0.0"`
 	GrpcPort    string        `envconfig:"default=50051"`
 	ConfigPort  string        `envconfig:"default=50055"`
 	Debug       bool          `envconfig:"default=false"`

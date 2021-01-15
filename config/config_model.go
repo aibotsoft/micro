@@ -39,7 +39,8 @@ type Service struct {
 	TestEnv     bool          `envconfig:"default=false"`
 	GrpcHost    string        `envconfig:"default=0.0.0.0"`
 	GrpcPort    string        `envconfig:"default=50051"`
-	ConfigPort  string        `envconfig:"default=50055"`
+	ConfigHost  string        `envconfig:"default=config-service"`
+	ConfigPort  string        `envconfig:"default=50051"`
 	Debug       bool          `envconfig:"default=false"`
 	GrpcTimeout time.Duration `envconfig:"default=1s"`
 }

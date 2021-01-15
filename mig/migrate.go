@@ -35,7 +35,7 @@ func MigrateUp(cfg *config.Config, log *zap.SugaredLogger, db *sqlx.DB) error {
 
 	migrateInstance, err := migrate.NewWithDatabaseInstance(sourceURL, "sqlserver", instance)
 	if err != nil {
-		return errors.Wrap(err, "migrate.NewWithDatabaseInstance error")
+		return errors.Wrapf(err, "migrate.NewWithDatabaseInstance_error, user:%v", cfg.Migrate.User)
 	}
 
 	err = migrateInstance.Up()

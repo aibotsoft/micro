@@ -8,6 +8,9 @@ import (
 func TestUnixUsNow(t *testing.T) {
 	got := UnixUsNow()
 	t.Log(got)
+
+	//9223372036854775807
+	//1595760433707325
 }
 
 func TestUnixMsNow(t *testing.T) {
@@ -35,5 +38,24 @@ func TestFloatToStr(t *testing.T) {
 	t.Log(got)
 	got = FloatToStr(1)
 	t.Log(got)
+
+}
+
+func TestTruncateFloat(t *testing.T) {
+	got := TruncateFloat(1.0059, 3)
+	assert.Equal(t, 1.005, got)
+}
+
+func TestMaxFloat(t *testing.T) {
+	got := MaxFloat(0, 1, 2, 3)
+	assert.Equal(t, float64(3), got)
+}
+
+func TestTimeId(t *testing.T) {
+	got := TimeId(5)
+	t.Log(got)
+	//9223372036854775807
+	//115957610403641252
+	//15957605681168675
 
 }

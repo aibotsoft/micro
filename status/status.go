@@ -3,6 +3,8 @@ package status
 const (
 	StatusOk             = "Ok"
 	StatusNotFound       = "NotFound"
+	ServiceBusy          = "service_busy"
+	Suspended            = "Suspended"
 	MarketClosed         = "MarketClosed"
 	StatusError          = "Error"
 	StatusNotAccepted    = "NotAccepted"
@@ -16,6 +18,8 @@ const (
 	PendingAcceptance    = "PendingAcceptance"
 	ServiceError         = "ServiceError"
 	HandicapChanged      = "HandicapChanged"
+	DeadlineExceeded     = "DeadlineExceeded"
+	PriceTooLow          = "price_too_low"
 )
 
 //ALL_BETTING_CLOSED,

@@ -14,10 +14,12 @@ func TestMssqlConfig(t *testing.T) {
 		_ = os.Setenv("SERVICE_NAME", "test_name")
 		_ = os.Setenv("SERVICE_ENV", "test_env")
 		_ = os.Setenv("SERVICE_TEST_ENV", "true")
+		_ = os.Setenv("SERVICE_CONFIG_PORT", "test_config")
 		cfg := config.New()
 		assert.Equal(t, "test_name", cfg.Service.Name)
 		assert.Equal(t, "test_env", cfg.Service.Env)
 		assert.Equal(t, true, cfg.Service.TestEnv)
+		assert.Equal(t, "test_config", cfg.Service.ConfigPort)
 	})
 	t.Run("mssql config", func(t *testing.T) {
 		_ = os.Setenv("MSSQL_HOST", "0.0.0.0")

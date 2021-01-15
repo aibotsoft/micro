@@ -42,9 +42,13 @@ func (c *ConfClient) Ping(ctx context.Context) error {
 func (c *ConfClient) Connect() (err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancel()
-	c.conn, err = grpc.DialContext(ctx, c.cfg.Service.ConfigPort, grpc.WithInsecure(), grpc.WithBlock())
+
+	hostPort := net.JoinHostPort(c.cfg.Service.ConfigHost, c.cfg.Service.ConfigPort)
+
+	c.log.Infow("begin connect to config service", "")
+	c.conn, err = grpc.DialContext(ctx, hostPort, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
-		return errors.Wrapf(err, "dial_config_service_error, port: %q", c.cfg.Service.ConfigPort)
+		return errors.Wrapf(err, "dial_config_service_error, port: %q", hostPort)
 	}
 	c.client = pb.NewConfClient(c.conn)
 	return nil

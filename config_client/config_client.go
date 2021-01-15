@@ -45,7 +45,7 @@ func (c *ConfClient) Connect() (err error) {
 
 	hostPort := net.JoinHostPort(c.cfg.Service.ConfigHost, c.cfg.Service.ConfigPort)
 
-	c.log.Infow("begin connect to config service", "")
+	c.log.Infow("begin connect to config service", "hostPort", hostPort)
 	c.conn, err = grpc.DialContext(ctx, hostPort, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		return errors.Wrapf(err, "dial_config_service_error, port: %q", hostPort)
